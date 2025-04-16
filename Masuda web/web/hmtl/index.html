@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masuda family Shop</title>
+
+  <!-- ファビコン -->
+  <link rel="icon" href="../app.ico" type="image/x-icon">
+  <!-- Tailwind CSS（最新版） -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOSアニメーション -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+      background-color: rgba(31, 41, 55, 0.8); /* gray-800 */
+    }
+    /* 音声をページに埋め込むスタイル */
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+  <div class="flex justify-center mt-6">
+    <img src="../MFS-1--unscreen.gif" alt="Masuda Logo" class="h-40">
+  </div>
+
+  <!-- BGM -->
+  <audio id="bgm1" loop>
+    <source src="bgm.mp3" type="audio/mpeg">
+    お使いのブラウザはオーディオタグをサポートしていません。
+  </audio>
+
+  <audio id="bgm2" loop>
+    <source src="BGM 2.mp3" type="audio/mpeg">
+    お使いのブラウザはオーディオタグをサポートしていません。
+  </audio>
+
+  <!-- 音量調節とBGM選択 -->
+  <div class="fixed bottom-4 right-4 bg-gray-800 p-3 rounded-lg shadow-lg flex flex-col gap-2 z-50">
+    <div class="flex items-center justify-between gap-4">
+      <span class="text-white text-sm">🔊</span>
+      <input 
+        type="range" 
+        id="volumeSlider" 
+        min="0" 
+        max="100" 
+        value="20"
+        class="w-24 h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+      >
+    </div>
+    <div class="flex gap-2 justify-center">
+      <button id="bgm1Btn" class="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-600">BGM 1</button>
+      <button id="bgm2Btn" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 active">BGM 2</button>
+    </div>
+  </div>
+
+  <script>
+    const audio1 = document.getElementById('bgm1');
+    const audio2 = document.getElementById('bgm2');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const bgm1Btn = document.getElementById('bgm1Btn');
+    const bgm2Btn = document.getElementById('bgm2Btn');
+    
+    let currentAudio = audio2;
+    
+    // 初期設定
+    audio1.volume = 0.2;
+    audio2.volume = 0.2;
+    audio2.play(); // 最初のBGMを再生
+
+    // 音量調節
+    volumeSlider.addEventListener('input', function() {
+      const volume = this.value / 100;
+      audio1.volume = volume;
+      audio2.volume = volume;
+    });
+
+    // BGM切り替え
+    bgm1Btn.addEventListener('click', function() {
+      audio2.pause();
+      audio1.currentTime = 0;
+      audio1.play();
+      currentAudio = audio1;
+      bgm1Btn.classList.add('bg-blue-500');
+      bgm1Btn.classList.remove('bg-gray-600');
+      bgm2Btn.classList.add('bg-gray-600');
+      bgm2Btn.classList.remove('bg-blue-500');
+    });
+
+    bgm2Btn.addEventListener('click', function() {
+      audio1.pause();
+      audio2.currentTime = 0;
+      audio2.play();
+      currentAudio = audio2;
+      bgm2Btn.classList.add('bg-blue-500');
+      bgm2Btn.classList.remove('bg-gray-600');
+      bgm1Btn.classList.add('bg-gray-600');
+      bgm1Btn.classList.remove('bg-blue-500');
+    });
+  </script>
+
+  <!-- ナビゲーション -->
+  <header class="sticky-header p-6 shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <h1 class="text-3xl font-bold">Masuda family Shop</h1>
+      <nav>
+        <a href="#mods" class="text-gray-300 hover:text-white transition">MOD一覧</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メイン -->
+  <main class="p-6 max-w-7xl mx-auto">
+    <section id="mods">
+      <h2 class="text-2xl font-semibold mb-8" data-aos="fade-up">MOD List</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        
+        <!-- MODカード：警察車両パック -->
+        <a href="citizen.html" class="block bg-gray-800 p-5 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300" data-aos="zoom-in">
+            <h3 class="text-xl font-bold">Citizen Pack</h3>
+            <p class="text-gray-400 mt-2">FPSpackや、水の見えるCitizenを配布してます。</p>
+            <span class="inline-block mt-4 text-blue-400 hover:underline">見る</span>
+        </a>
+        
+        <!-- MODカード：バイクMOD -->
+        <a href="bike-mods.html" class="block bg-gray-800 p-5 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="100">
+            <h3 class="text-xl font-bold">Reshade</h3>
+            <p class="text-gray-400 mt-2">画面の色合いを変えます。</p>
+            <span class="inline-block mt-4 text-blue-400 hover:underline">見る</span>
+        </a>
+        
+        <!-- MODカード：サウンドパック -->
+        <a href="sound-mods.html" class="block bg-gray-800 p-5 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="200">
+            <h3 class="text-xl font-bold">Sound Pack</h3>
+            <p class="text-gray-400 mt-2">Weponの音を変えます。</p>
+            <span class="inline-block mt-4 text-blue-400 hover:underline">見る</span>
+        </a>
+
+
+        <!-- MODカード：マップパック -->
+        <a href="montage.html" class="block bg-gray-800 p-5 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="400">
+            <h3 class="text-xl font-bold">おすすMontage作成</h3>
+            <p class="text-gray-400 mt-2">Montageを作成します。</p>
+            <span class="inline-block mt-4 text-blue-400 hover:underline">見る</span>
+        </a>
+
+        <!-- MODカード：トリミング -->
+        <a href="cat.html" class="block bg-gray-800 p-5 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="450">
+            <h3 class="text-xl font-bold">YouTube MP3変換</h3>
+            <p class="text-gray-400 mt-2">YouTubeの動画をMP3に変換してダウンロードできます。</p>
+            <span class="inline-block mt-4 text-blue-400 hover:underline">見る</span>
+        </a>
+
+        <!-- MODカード：武器パック -->
+        <a href="wepons.html" class="block bg-gray-800 p-5 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="500">
+            <h3 class="text-xl font-bold">Weapon Skins</h3>
+            <p class="text-gray-400 mt-2">武器スキンを追加できます。(MOD武器以外使用可能)</p>
+            <span class="inline-block mt-4 text-blue-400 hover:underline">見る</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="mt-20 p-6 text-center text-gray-500">
+    © 2025 TMD設立。ますだ組優勝。
+  </footer>
+
+  <!-- AOS初期化 -->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  </script>
+</body>
+
+  <!-- Montageセクション -->
+<section id="montage" class="mt-32">
+    <h2 class="text-2xl font-semibold text-center mb-8" data-aos="fade-up">Montage</h2>
+    <div class="flex justify-center">
+        <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+        title="My Montage Video" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>      
+    </div>
+  </section>
+
+</html> 

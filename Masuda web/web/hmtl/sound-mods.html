@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sound Pack - Masuda family Shop</title>
+
+  <!-- ファビコン -->
+  <link rel="icon" href="../favicon.png" type="image/png">
+  <!-- Tailwind CSS（最新版） -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOSアニメーション -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+      background-color: rgba(31, 41, 55, 0.8);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+  <div class="flex justify-center mt-6">
+    <img src="../MFS-1--unscreen.gif" alt="Masuda Logo" class="h-40">
+  </div>
+
+  <!-- ナビゲーション -->
+  <header class="sticky-header p-6 shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <h1 class="text-3xl font-bold">Sound Pack</h1>
+      <nav>
+        <a href="index.html" class="text-gray-300 hover:text-white transition">ホームに戻る</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="p-6 max-w-7xl mx-auto">
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-8" data-aos="fade-up">Sound Pack 一覧</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- 武器音パック -->
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg" data-aos="zoom-in">
+          <h3 class="text-xl font-bold mb-4">武器音パック</h3>
+          <p class="text-gray-400 mb-4">武器の音をリアルに変更するパックです。</p>
+          <a href="https://discord.gg/cQ5J7akP" target="_blank" class="inline-block bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition">Discordに参加してダウンロード</a>
+        </div>
+
+        <!-- 環境音パック -->
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="text-xl font-bold mb-4">環境音パック</h3>
+          <p class="text-gray-400 mb-4">ゲーム内の環境音を改善するパックです。</p>
+          <a href="https://discord.gg/cQ5J7akP" target="_blank" class="inline-block bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition">Discordに参加してダウンロード</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- インストール方法 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-8" data-aos="fade-up">インストール方法</h2>
+      <div class="bg-gray-800 p-6 rounded-xl shadow-lg" data-aos="fade-up">
+        <ol class="list-decimal list-inside space-y-4">
+          <li>ダウンロードしたファイルを解凍します</li>
+          <li>Soundフォルダ内のファイルを、ゲームのSoundフォルダに上書きします</li>
+          <li>ゲームを起動して、変更が反映されているか確認してください</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Discord参加セクション -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-8" data-aos="fade-up">Discordサーバーに参加</h2>
+      <div class="bg-gray-800 p-6 rounded-xl shadow-lg" data-aos="fade-up">
+        <p class="text-gray-300 mb-4">最新のSound Packやサポートを受けるために、Discordサーバーに参加しましょう！</p>
+        <a href="https://discord.gg/your-invite-link" target="_blank" class="inline-block bg-indigo-500 text-white px-6 py-3 rounded-lg hover:bg-indigo-600 transition">
+          Discordに参加する
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="mt-20 p-6 text-center text-gray-500">
+    © 2025 TMD設立。ますだ組優勝。
+  </footer>
+
+  <!-- AOS初期化 -->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  </script>
+</body>
+</html> 

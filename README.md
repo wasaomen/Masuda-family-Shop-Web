@@ -1,1 +1,0 @@
-# Masuda-family-Shop-Web
